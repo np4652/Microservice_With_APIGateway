@@ -1,0 +1,15 @@
+version: '3.4'
+
+services:
+  authservice:
+    image: authservice:v1
+    ports:
+      - "5093:5093"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - DOWNSTREAM_SERVICE_URL=http://downstream-service:5093
+
+  downstream-service:
+    image: downstreamservice:v1
+    ports:
+      - "5093:5093"
