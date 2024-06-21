@@ -77,15 +77,12 @@ This project demonstrates the implementation of the microservice architecture pa
 │   ├── ApiGateway
 │   │   ├── ocelot.json
 │   │   ├── Program.cs
-│   │   └── Startup.cs
 │   ├── Auth
 │   │   ├── Controllers
 │   │   ├── Program.cs
-│   │   └── Startup.cs
 │   ├── Shoe
 │   │   ├── Controllers
 │   │   ├── Program.cs
-│   │   └── Startup.cs
 ├── docker-compose.yml
 ├── README.md
 └── .gitignore
