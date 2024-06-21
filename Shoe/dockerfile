@@ -1,5 +1,10 @@
 # Use the official .NET Core SDK image for building the application
-FROM mcr.microsoft.com/dotnet/sdk:8.0-alpine AS build
+FROM mcr.microsoft.com/dotnet/aspnet:8.0-nanoserver-1809 AS base
+WORKDIR /app
+EXPOSE 8080
+
+# Use the official .NET Core SDK image for building the application
+FROM mcr.microsoft.com/dotnet/sdk:8.0-nanoserver-1809  AS build
 WORKDIR /app
 
 # Copy csproj and restore any dependencies
@@ -11,12 +16,12 @@ COPY . .
 RUN dotnet publish -c Release -o out
 
 # Use the official ASP.NET Core runtime image for running the application
-FROM mcr.microsoft.com/dotnet/aspnet:8.0-alpine
+FROM mcr.microsoft.com/dotnet/aspnet:8.0-nanoserver-1809
 WORKDIR /app
 COPY --from=build /app/out .
 
 # Expose the port the application runs on
-EXPOSE 80
+EXPOSE 5127
 
 # Set the entry point to the application
 ENTRYPOINT ["dotnet", "Shoe.dll"]

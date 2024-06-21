@@ -1,0 +1,33 @@
+services:
+  apigatewayservice:
+    image: apigateway:v1
+    ports:
+      - "5108:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - DOWNSTREAM_SERVICE_URL=http://shoeservice:8080
+      - AUTH_SERVICE_URL=http://authservice:8080
+    networks:
+      - mynetwork
+
+  authservice:
+    image: authservice:v1
+    ports:
+      - "5093:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    networks:
+      - mynetwork
+
+  shoeservice:
+    image: shoeservice:v1
+    ports:
+      - "5127:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    networks:
+      - mynetwork
+
+networks:
+  mynetwork:
+    # driver: bridge
