@@ -15,6 +15,12 @@ namespace Auth.Controllers
             _jwtTokenService = jwtTokenService;
         }
 
+        [HttpGet(nameof(Index))]
+        public IActionResult Index()
+        {
+            return Ok("Authservice is running....");
+        }
+
         [HttpPost(nameof(Login))]
         public IActionResult Login(LoginRequest user)
         {

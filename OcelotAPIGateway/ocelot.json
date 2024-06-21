@@ -2,25 +2,25 @@
   "Routes": [
     {
       "UpstreamPathTemplate": "/auth",
-      "UpstreamHttpMethod": [ "Post" ],
+      "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
       "DownstreamScheme": "http",
       "DownstreamPathTemplate": "/api/auth/login",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 5093
+          "Host": "authservice",
+          "Port": 8080
         }
       ]
     },
     {
       "UpstreamPathTemplate": "/shoes",
-      "UpstreamHttpMethod": [ "Get" ],
+      "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
       "DownstreamPathTemplate": "/api/shoes",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 5127
+          "Host": "shoeservice",
+          "Port": 8080
         }
       ],
       "AuthenticationOptions": {
@@ -29,22 +29,23 @@
     },
     {
       "UpstreamPathTemplate": "/shoes1",
-      "UpstreamHttpMethod": [ "Get" ],
+      "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
       "DownstreamPathTemplate": "/api/shoes",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 5127
+          "Host": "shoeservice",
+          "Port": 8080
         }
       ]
     }
   ],
   "GlobalConfiguration": {
+    "BaseUrl": "http://localhost:5108",
     "RequestIdKey": "OcRequestId",
     "AdministrationPath": "/administration"
   },
   "AuthenticationOptions": {
     "AuthenticationProviderKey": "Bearer"
   }
-}  
+}
