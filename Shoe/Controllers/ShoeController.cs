@@ -1,8 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Shoe.Application;
+using System.Security.Claims;
 
 namespace Shoe.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class ShoesController : ControllerBase
@@ -17,6 +20,7 @@ namespace Shoe.Controllers
         [HttpGet]
         public IActionResult Get()
         {
+            var userName = User.FindFirstValue("username");
             return Ok(_shoeRepository.GetShoes());
         }
 
