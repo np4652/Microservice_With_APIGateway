@@ -7,8 +7,8 @@
       "DownstreamPathTemplate": "/api/auth/login",
       "DownstreamHostAndPorts": [
         {
-          "Host": "authservice",
-          "Port": 8080
+          "Host": "localhost",
+          "Port": 5093
         }
       ]
     },
@@ -19,8 +19,8 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "shoeservice",
-          "Port": 8080
+          "Host": "localhost",
+          "Port": 5127
         }
       ],
       "AuthenticationOptions": {
@@ -34,14 +34,14 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "shoeservice",
-          "Port": 8080
+          "Host": "localhost",
+          "Port": 5127
         }
       ]
     }
   ],
   "GlobalConfiguration": {
-    "BaseUrl": "http://localhost:5108",
+    "BaseUrl": "localhost:5108",
     "RequestIdKey": "OcRequestId",
     "AdministrationPath": "/administration"
   },
